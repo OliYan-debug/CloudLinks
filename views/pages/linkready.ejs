@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include("../partials/head.ejs", title="CloudLinks") %>
+  </head>
+  <body>
+    <div class="w-100 vh-100 d-flex justify-content-center align-items-center">
+      <div class="spinner-grow text-info" role="status">
+        <!-- <span class="ms-5">Carregando...</span> -->
+      </div>
+    </div>
+
+    <%- include('../partials/bootstrapJs.ejs')%>
+  </body>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+        setTimeout(()=>{
+            location.href = "/";
+        }, 1000)
+    });
+  </script>
+</html>

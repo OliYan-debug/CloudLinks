@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include("../partials/head.ejs", title="CloudLinks") %>
+  </head>
+  <body>
+    <%- include("../partials/header.ejs") %>
+
+    <form
+      class="container-fluid d-flex mt-2 flex-column align-items-center flex-wrap"
+      action="/edit"
+      method="post"
+    >
+      <h3>Modificando o link ( <%= link.title %>  )</h3>
+      <input type="hidden" name="id" value="<%= link._id %>">
+      <input class="mb-2 p-1 w-50" name="title" value="<%= link.title %>" placeholder="Título*" />
+      <input class="mb-2 p-1 w-50" name="url" value="<%= link.url %>" placeholder="Url*" />
+      <input class="mb-2 p-1 w-50" name="description" value="<%= link.description %>" placeholder="Descrição" />
+      <button class="btn btn-dark mt-2">Salvar</button>
+      <% if(error){ %>
+      <div class="alert alert-danger mt-2" role="alert"><%= error %></div>
+      <% } %>
+    </form>
+  </body>
+</html>

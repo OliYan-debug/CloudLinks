@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include("../partials/head.ejs", title="CloudLinks") %>
+  </head>
+  <body>
+    <%- include("../partials/header.ejs") %> 
+
+
+    <form
+      class="container-fluid d-flex mt-2 flex-column align-items-center flex-wrap"
+      action="/"
+      method="post"
+    >
+      <h3>Adicione Novo Link</h3>
+      <input class="mb-2 p-1" name="title" placeholder="Título*" />
+      <input class="mb-2 p-1" name="url" placeholder="Url*" />
+      <input class="mb-2 p-1" name="description" placeholder="Descrição"  />
+      <button class="btn btn-dark mt-2">Salvar</button>
+      <% if(error){ %> 
+        <div class="alert alert-danger mt-2" role="alert">
+          <%= error %> 
+        </div>
+      <% } %> 
+    </form>
+
+    <div class="container mt-5">
+      <h2>Últimos links <a href="/all" class="ms-2 font-monospace text-muted fs-6">Ver todos</a></h2> 
+      <% for(let link of data){ %>
+        <div id="<%=link.id%>">
+          <a href="/<%= link.title%>""><%= link.title %></a>
+          <% if(link.description) { %>
+            <p class="text-muted"><%= link.description %> </p>
+          <% } else{ %>
+            <p class="text-muted"></p>
+            <% } %> 
+        </div>  
+      <% } %> 
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include("../partials/head.ejs", title="CloudLinks") %>
+  </head>
+  <body>
+    <%- include("../partials/header.ejs") %>
+
+    <div class="container mt-3">
+      <h2>Todos os links</h2>
+      <p class="text-muted">Ordem: Mais visualizados</p>
+      <% for(let link of data){ %>
+      <div id="<%=link.id%>">
+        <a href="/<%= link.title%>" class="fs-3"><%= link.title %></a>
+        <button
+          class="btn"
+          onclick="deleteLink('<%=link.id%>')"
+          title="Apagar link"
+        >
+          <i class="fa-solid fa-delete-left"></i>
+        </button>
+        <a class="text-dark" href="/edit/<%=link.id%>"><i class="fa-solid fa-pen-to-square"></i></a>
+        <i class="fa-solid fa-eye ms-2"></i> <span><%= link.views %> </span>
+        <% if(link.description) { %>
+        <p class="text-muted"><%= link.description %></p>
+        <% } else{ %>
+        <p class="text-muted"></p>
+        <% } %>
+      </div>
+      <% } %>
+
+      <script>
+        function deleteLink(id) {
+          fetch("/" + id, { method: "DELETE" })
+            .then((res) => {
+              res.json().then((res) => console.log(res))
+            })
+            .catch((error) => {
+              console.log(error.message);
+            });
+          document.getElementById(id).remove()       
+          }
+      </script>
+    </div>
+  </body>
+</html>
