@@ -13,4 +13,4 @@ This project is for the people who always have a link to save but sometimes forg
 
 [Live Demo](https://jade-eager-duckling.cyclic.app/)
 
-https://github.com/OliYan-debug/CloudLinks/blob/main/examples/demo.mkv
+<img src="https://i.imgur.com/JBIsn1x.gif">
